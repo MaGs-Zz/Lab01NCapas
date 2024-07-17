@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal interface IRepository : IDisposable
+    public interface IRepository : IDisposable
     {
         //Agregar una nueva entidad a la base da datos
         Task<TEntity> CreateAsync<TEntity>(TEntity toCreate) where TEntity : class;

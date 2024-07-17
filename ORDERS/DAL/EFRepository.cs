@@ -1,4 +1,5 @@
 ﻿using DAL.Datos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -66,9 +67,18 @@ namespace DAL
             }
         }
 
-        public Task<List<TEntity>> FilterAsync<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
+        public async Task<List<TEntity>> FilterAsync<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
         {
-            throw new NotImplementedException();
+            List<TEntity> Result = default(List<TEntity>);
+            try
+            {
+                Result = await _context.Set<TEntity>().Where(criteria).ToListAsync();
+            }
+            catch (DbException)
+            {
+                throw;
+            }
+            return Result;
         }
 
         public Task<TEntity> RetreiveAsync<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class

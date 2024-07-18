@@ -1,11 +1,13 @@
 ﻿using DAL;
 using Entities.Models;
 using System.Linq.Expressions;
+using System.Reflection;
 
 //CreateAsync().GetAwaiter().GetResult();
 //RetreieveAsync().GetAwaiter().GetResult();
 //UpdateAsync().GetAwaiter().GetResult();
-Filterasync().GetAwaiter().GetResult();
+//Filterasync().GetAwaiter().GetResult();
+Deleteasync().GetAwaiter().GetResult();
 
 Console.ReadKey();
 static async Task CreateAsync()
@@ -110,5 +112,20 @@ static async Task Filterasync()
             Console.WriteLine($"Customer:  { customer.FirstName} {customer.LastName} \t from {customer.City}");
         }
 
+    }
+}
+
+static async Task Deleteasync()
+{
+    using (var repository = RepositoryFactory.CreateRepository())
+    {
+        Expression<Func<Customer, bool>> criteria = customer => customer.Id == 93;
+
+        var customerToDelete = await repository.RetreiveAsync(criteria);
+        if (customerToDelete != null)
+        {
+            bool deleted = await repository.DeleteAsync(customerToDelete);
+            Console.WriteLine(deleted ? "Customer deleted succesfully. " : "Failed to delete customer.");
+        }
     }
 }

@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 //CreateAsync().GetAwaiter().GetResult();
 //RetreieveAsync().GetAwaiter().GetResult();
 UpdateAsync().GetAwaiter().GetResult();
+
+Console.ReadKey();
 static async Task CreateAsync()
 {
     //Add Customer

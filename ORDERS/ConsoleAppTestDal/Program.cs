@@ -3,7 +3,8 @@ using Entities.Models;
 using System.Linq.Expressions;
 
 //CreateAsync().GetAwaiter().GetResult();
-RetreieveAsync().GetAwaiter().GetResult();
+//RetreieveAsync().GetAwaiter().GetResult();
+UpdateAsync().GetAwaiter().GetResult();
 static async Task CreateAsync()
 {
     //Add Customer
@@ -40,7 +41,7 @@ static async Task RetreieveAsync()
     {
         try
         {
-            Expression<Func<Customer, bool>> criteria = c => c.FirstName == "Andres" && c.LastName == "Pinzon";
+            Expression<Func<Customer, bool>> criteria = c => c.FirstName == "Miguel" && c.LastName == "Gomez";
             var customer = await repository.RetreiveAsync(criteria);
             if (customer != null)
             {
@@ -51,6 +52,43 @@ static async Task RetreieveAsync()
         catch (Exception ex)
         {
 
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}
+
+static async Task UpdateAsync()
+{
+    //Ya existe el objeto a modificar
+
+
+    using (var repository = RepositoryFactory.CreateRepository())
+    {
+        var customerToUpdate = await repository.RetreiveAsync<Customer>(c => c.Id == 52);
+
+        if (customerToUpdate != null)
+        {
+            customerToUpdate.FirstName = "Alexander";
+            customerToUpdate.LastName = "Feuer";
+            customerToUpdate.City = "Madrid";
+            customerToUpdate.Country = "Spain";
+            customerToUpdate.Phone = "(91) 666 85 82";
+        }
+
+        try
+        {
+            bool updated = await repository.UpdateAsync(customerToUpdate);
+            if (updated)
+            {
+                Console.WriteLine("Customer updated succesfully.");
+            }
+            else
+            {
+                Console.WriteLine("Customer Updated failed.");
+            }
+        }
+        catch (Exception ex)
+        {
             Console.WriteLine($"Error: {ex.Message}");
         }
     }

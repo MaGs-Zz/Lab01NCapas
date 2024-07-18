@@ -3,7 +3,7 @@ using Entities.Models;
 using System.Linq.Expressions;
 
 //CreateAsync().GetAwaiter().GetResult();
-RetreiveAsync().GetAwaiter().GetResult();
+RetreieveAsync().GetAwaiter().GetResult();
 static async Task CreateAsync()
 {
     //Add Customer
@@ -34,14 +34,14 @@ static async Task CreateAsync()
 
 }
 
-static async Task RetrieveAsync()
+static async Task RetreieveAsync()
 {
     using (var repository = RepositoryFactory.CreateRepository())
     {
         try
         {
             Expression<Func<Customer, bool>> criteria = c => c.FirstName == "Andres" && c.LastName == "Pinzon";
-            var customer = await repository.RetrieveAsync(criteria);
+            var customer = await repository.RetreiveAsync(criteria);
             if (customer != null)
             {
                 Console.WriteLine($"Retrived customer: {customer.FirstName} \t{customer.LastName}\t City: {customer.City}\t Country: {customer.Country}");

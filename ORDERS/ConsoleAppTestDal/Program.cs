@@ -4,7 +4,8 @@ using System.Linq.Expressions;
 
 //CreateAsync().GetAwaiter().GetResult();
 //RetreieveAsync().GetAwaiter().GetResult();
-UpdateAsync().GetAwaiter().GetResult();
+//UpdateAsync().GetAwaiter().GetResult();
+Filterasync().GetAwaiter().GetResult();
 
 Console.ReadKey();
 static async Task CreateAsync()
@@ -93,5 +94,21 @@ static async Task UpdateAsync()
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+    }
+}
+
+static async Task Filterasync()
+{
+    using (var repository = RepositoryFactory.CreateRepository())
+    {
+        Expression<Func<Customer, bool >> criteria = c => c.Country == "USA";
+
+        var customers = await repository.FilterAsync(criteria);
+
+        foreach (var customer in customers)
+        {
+            Console.WriteLine($"Customer:  { customer.FirstName} {customer.LastName} \t from {customer.City}");
+        }
+
     }
 }

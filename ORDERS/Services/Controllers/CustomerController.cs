@@ -13,10 +13,11 @@ namespace Services.Controllers
     public class CustomerController : ControllerBase, ICustomerService
     {
         private readonly Customers _bll; //Dependency injection for better testability
-        public CustomerController(Customer bll)
+        public CustomerController(Customers bll)
         {
-            _bll = bll;
+            this._bll = bll;
         }
+
         //GET : api/<CustomerController>
         [HttpGet]
         public async Task<ActionResult<List<Customer>>> GetAll()
@@ -36,6 +37,7 @@ namespace Services.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
         }
+
         //GET api/<CustomerController>/5
         [HttpGet("{id}", Name = "RetrieveAsync")]
         public async Task<ActionResult<Customer>> RetrieveAsync(int id)
@@ -61,6 +63,7 @@ namespace Services.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
         }
+
         // POST: api/<CustomerController>
         [HttpPost]
         public async Task<ActionResult<Customer>> CreateAsync([FromBody] Customer toCreate)
@@ -114,6 +117,7 @@ namespace Services.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
         }
+
         // DELETE api/<CustomerController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)

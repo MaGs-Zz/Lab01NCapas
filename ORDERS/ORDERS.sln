@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLC", "SLC\SLC.csproj", "{2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{A0FECAAE-33C9-4DFC-BBFF-CA1C9E3C9E12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyServer", "ProxyServer\ProxyServer.csproj", "{84C5B159-D6AD-4C8A-A123-2E36EB3CF153}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProxyServer", "ProxyServer\ProxyServer.csproj", "{84C5B159-D6AD-4C8A-A123-2E36EB3CF153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationOrders", "WebApplicationOrders\WebApplicationOrders.csproj", "{D89DEE4C-DD8B-4679-8ABA-4FDE00520FBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{84C5B159-D6AD-4C8A-A123-2E36EB3CF153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84C5B159-D6AD-4C8A-A123-2E36EB3CF153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84C5B159-D6AD-4C8A-A123-2E36EB3CF153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89DEE4C-DD8B-4679-8ABA-4FDE00520FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89DEE4C-DD8B-4679-8ABA-4FDE00520FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89DEE4C-DD8B-4679-8ABA-4FDE00520FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89DEE4C-DD8B-4679-8ABA-4FDE00520FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

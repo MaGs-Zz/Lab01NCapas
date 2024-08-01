@@ -31,7 +31,7 @@ namespace Services.Controllers
             {
                 return BadRequest(ex.Message); // Return 400 Bad Request with error message
             }
-            catch (Exception ex) // Catch unhandled exceptions for logging and generic error response
+            catch (Exception ) // Catch unhandled exceptions for logging and generic error response
             {
                 // Log the exception
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
@@ -57,7 +57,7 @@ namespace Services.Controllers
             {
                 return BadRequest(ce.Message);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 // Log the exception
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
@@ -77,12 +77,13 @@ namespace Services.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 // Log the exception
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
         }
+
         // PUT api/<CustomerController>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] Customer toUpdate)
@@ -110,7 +111,7 @@ namespace Services.Controllers
                 // Maneja excepciones específicas de clientes
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 // Maneja excepciones generales
                 // Log the exception
@@ -135,7 +136,7 @@ namespace Services.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 // Log the exception
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");

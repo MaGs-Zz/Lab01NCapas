@@ -1,0 +1,61 @@
+﻿@model Entities.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <div class="text-center">
+        <h4>Product</h4>
+        <hr class="my-4" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    ID
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Id
+                </dd>
+                <dt class="col-sm-4">
+                    Product Name
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.ProductName
+                </dd>
+                <dt class="col-sm-4">
+                    Supplier ID
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.SupplierId
+                </dd>
+                <dt class="col-sm-4">
+                    Unit Price
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.UnitPrice
+                </dd>
+                <dt class="col-sm-4">
+                    Package
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Package
+                </dd>
+                <dt class="col-sm-4">
+                    Is Discontinued
+                </dt>
+                <dd class="col-sm-8">
+                    @(Model.IsDiscontinued ? "Yes" : "No")
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+    </div>
+</div>

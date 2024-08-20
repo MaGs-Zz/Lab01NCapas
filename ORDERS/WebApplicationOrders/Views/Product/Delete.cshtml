@@ -1,0 +1,62 @@
+﻿@model Entities.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <h4 class="text-center">Product</h4>
+    <hr class="my-4" />
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    ID
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Id
+                </dd>
+                <dt class="col-sm-4">
+                    Product Name
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.ProductName
+                </dd>
+                <dt class="col-sm-4">
+                    Supplier ID
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.SupplierId
+                </dd>
+                <dt class="col-sm-4">
+                    Unit Price
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.UnitPrice
+                </dd>
+                <dt class="col-sm-4">
+                    Package
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Package
+                </dd>
+                <dt class="col-sm-4">
+                    Is Discontinued
+                </dt>
+                <dd class="col-sm-8">
+                    @(Model.IsDiscontinued ? "Yes" : "No")
+                </dd>
+            </dl>
+
+            <form asp-controller="Product" asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

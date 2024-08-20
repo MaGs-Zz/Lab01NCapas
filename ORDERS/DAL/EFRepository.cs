@@ -12,22 +12,17 @@ namespace DAL
 {
     public class EFRepository : IRepository
     {
-
-        //LLamada a la clase de contexto
-
+        //Llamada a la clase decontexto 
         ApplicationDbContext _context;
 
-        //Constructor
-
+        //Constructor 
         public EFRepository(ApplicationDbContext context)
-        { 
+        {
             this._context = context;
         }
 
-        //Dispose
+        //Dispose 
         private bool disposedValue;
-
-
         public async Task<TEntity> CreateAsync<TEntity>(TEntity toCreate) where TEntity : class
         {
             TEntity Result = default(TEntity);
@@ -81,12 +76,12 @@ namespace DAL
             return Result;
         }
 
-        public async Task<TEntity> RetreiveAsync<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
+        public async Task<TEntity> RetrieveAsync<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
         {
             TEntity Result = null;
             try
             {
-                Result = await _context.Set<TEntity>().FirstOrDefaultAsync(criteria); 
+                Result = await _context.Set<TEntity>().FirstOrDefaultAsync(criteria);
             }
             catch (DbException)
             {

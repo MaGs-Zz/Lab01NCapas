@@ -4,31 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Exceptions
+namespace BLL
 {
     public class CustomerExceptions : Exception
     {
-        // You can add more static methods here to throw other customer-related exceptions
-
-        public CustomerExceptions()
+        private CustomerExceptions(string message) : base(message)
         {
-            throw new CustomerExceptions($"No customers found in the database.");
+
         }
 
-        private CustomerExceptions(string message)
-            : base(message)
+        public static void ThrowCustomerAlreadyExitsException(string firstName, string lastName)
         {
-            throw new Exception(message);
+            throw new CustomerExceptions($"Un cliente con ese nombre ya existe{firstName} {lastName}.");
+
         }
 
-        public static void ThrowCustomerAlreadyExistsException(string firstName, string lastName)
+        public static void ThrowInvalidCustomerDataException(string message)
         {
-            throw new CustomerExceptions($"A client with the name already exists {firstName} {lastName}.");
+
+            throw new CustomerExceptions(message);
         }
 
         public static void ThrowInvalidCustomerIdException(int id)
         {
-            throw new CustomerExceptions($"Invalid Customer ID: {id}");
+            throw new CustomerExceptions($"Cliente con ID {id} no existe.");
         }
+
+
     }
 }
